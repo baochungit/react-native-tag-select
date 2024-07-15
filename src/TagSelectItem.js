@@ -36,45 +36,43 @@ TagSelectItem.propTypes = {
   itemLabelStyleSelected: PropTypes.any
 }
 
-TagSelectItem.defaultProps = {
-  label: null,
-  onPress: null,
-  selected: false,
-  touchComponent: 'TouchableOpacity',
-  activeOpacity: 0.5,
-  theme: 'default',
-  itemStyle: null,
-  itemStyleSelected: null,
-  itemLabelStyle: null,
-  itemLabelStyleSelected: null
-}
-
-function TagSelectItem (props) {
+function TagSelectItem ({
+  label = null,
+  onPress = null,
+  selected = false,
+  touchComponent = 'TouchableOpacity',
+  activeOpacity = 0.5,
+  theme = 'default',
+  itemStyle = null,
+  itemStyleSelected = null,
+  itemLabelStyle = null,
+  itemLabelStyleSelected = null
+}) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        onPress={props.onPress}
-        activeOpacity={props.activeOpacity}
+        onPress={onPress}
+        activeOpacity={activeOpacity}
       >
         <View
           style={[
             styles.inner,
-            styles[`${props.theme}Inner`],
-            props.itemStyle,
-            props.selected && styles[`${props.theme}InnerSelected`],
-            props.selected && props.itemStyleSelected
+            styles[`${theme}Inner`],
+            itemStyle,
+            selected && styles[`${theme}InnerSelected`],
+            selected && itemStyleSelected
           ]}
         >
           <Text
             numberOfLines={1}
             style={[
-              styles[`${props.theme}LabelText`],
-              props.itemLabelStyle,
-              props.selected && styles[`${props.theme}LabelTextSelected`],
-              props.selected && props.itemLabelStyleSelected
+              styles[`${theme}LabelText`],
+              itemLabelStyle,
+              selected && styles[`${theme}LabelTextSelected`],
+              selected && itemLabelStyleSelected
             ]}
           >
-            {props.label}
+            {label}
           </Text>
         </View>
       </TouchableOpacity>
